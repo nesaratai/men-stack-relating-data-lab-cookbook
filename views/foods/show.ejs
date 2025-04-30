@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= food.Title %> - Recipe</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1><%= food.Title %></h1>
+  <p><strong>Meal Type:</strong> <%= food.MealType %></p>
+  <p><strong>Cook Time:</strong> <%= food.CookTime %></p>
+
+  <% if (food.Ingredients && food.Ingredients.length > 0) { %>
+    <p><strong>Ingredients:</strong></p>
+    <ul>
+      <% food.Ingredients.forEach(function(ingredient) { %>
+        <li><%= ingredient %></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No ingredients listed.</p>
+  <% } %>
+
+  <p><strong>Description:</strong> <%= food.Description %></p>
+  <p><strong>Notes:</strong> <%= food.Notes %></p>
+
+
+  <p>
+    <a href="/foods/<%= food._id %>/edit">
+      <button>Edit Recipe</button>
+    </a>
+  </p>
+
+  <form action="/foods/<%= food._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Recipe</button>
+  </form>
+
+
+  <p><a href="/foods">← Back to Recipes</a></p>
+</body>
+</html>

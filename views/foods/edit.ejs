@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Recipe</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Edit Recipe: <%= food.Title %></h1>
+  
+  <form class="form-content" action="/foods/<%= food._id %>?_method=PUT" method="POST">
+    
+    <div class="form-group">
+      <label for="Title">Title:</label>
+      <input type="text" name="Title" id="Title" value="<%= food.Title %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="Ingredients">Ingredients:</label>
+      <input type="text" name="Ingredients" value="<%= food.Ingredients.join(', ') %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="CookTime">Cook Time:</label>
+      <input type="text" name="CookTime" value="<%= food.CookTime %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="Description">Description:</label>
+      <input type="text" name="Description" value="<%= food.Description %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="MealType">Meal Type:</label>
+      <select name="MealType">
+        <option value="Breakfast" <%= food.MealType === 'Breakfast' ? 'selected' : '' %>>Breakfast</option>
+        <option value="Lunch" <%= food.MealType === 'Lunch' ? 'selected' : '' %>>Lunch</option>
+        <option value="Dinner" <%= food.MealType === 'Dinner' ? 'selected' : '' %>>Dinner</option>
+        <option value="Snacks" <%= food.MealType === 'Snacks' ? 'selected' : '' %>>Snacks</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="Notes">Notes:</label>
+      <input type="text" name="Notes" value="<%= food.Notes %>" />
+    </div>
+
+    <button type="submit">Update Recipe</button>
+  </form>
+  
+  <p><a href="foods/<%= food._id %>">← Back to Recipe</a></p>
+</body>
+</html>

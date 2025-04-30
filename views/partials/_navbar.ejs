@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/stylesheets/partials.css" />
+<nav class="navbar">
+  <img src="" alt="">
+  <div class="nav-links">
+  <a href="/" class="btn">Home</a>
+  <% if (user) { %>
+      <a href="/foods" class="btn">My Pantry</a>
+      <a href="/auth/sign-out" class="btn">Sign Out</a>
+  <% } else { %>
+      <a href="/auth/sign-in" class="btn">Sign In</a>
+      <a href="/auth/sign-up" class="btn">Sign Up</a>
+  <% } %>
+</div>
+</nav>
